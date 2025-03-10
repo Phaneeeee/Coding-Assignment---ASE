@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+</head>
+<body>
+    <h2>Image Slider</h2>
+    <img id="slider" src="" alt="Image Slider" width="800" height="450">
+    <br>
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = [
+                "https://4kwallpapers.com/images/walls/thumbs_2t/8710.jpg",
+                "https://wallpapers.com/images/hd/red-and-green-4k-pc-houses-8d7ckpaq0ee576ko.jpg",
+                "https://free-3dtextureshd.com/wp-content/uploads/2024/05/131.jpg.webp"
+            ];
+            let currentIndex = 0;
+            const slider = document.getElementById("slider");
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            
+            function updateImage() {
+                slider.src = images[currentIndex];
+            }
+            
+            prevBtn.addEventListener("click", function () {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateImage();
+            });
+            
+            nextBtn.addEventListener("click", function () {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImage();
+            });
+            
+            updateImage();
+        });
+    </script>
+</body>
+</html>
